@@ -172,3 +172,7 @@ html,body{overflow-x:hidden}
 @media(max-width:900px){
   #top::before{background:linear-gradient(180deg,rgba(16,18,20,.55),rgba(16,18,20,.4) 50%,rgba(16,18,20,.7))}
 }
+@media(max-width:900px){
+  #top::before{background:rgba(16,18,20,.35) !important}
+  #top{background-image:none !important}
+}
