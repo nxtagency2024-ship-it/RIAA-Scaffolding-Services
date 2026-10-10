@@ -22,7 +22,7 @@ h2{font-size:clamp(2.2rem,5.5vw,4.2rem)}
 svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* header */
 header{position:sticky;top:0;z-index:40;background:#222326;border-bottom:1px solid var(--line);color:#fff}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:6rem;gap:1.5rem}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:5rem;gap:1.5rem}
 .logo{font-family:'Archivo Black';font-size:2.6rem;line-height:.9;display:flex;flex-direction:column}
 .logo b{color:var(--red)}
 .logo small{font-family:'Barlow Condensed';font-size:.7rem;letter-spacing:.12em;font-weight:700}
