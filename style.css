@@ -168,3 +168,4 @@ html,body{overflow-x:hidden}
 #top::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--black) 28%,rgba(16,18,20,.55) 70%,rgba(16,18,20,.7))}
 #top .wrap{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
+.hero-video{object-position:80% center}
