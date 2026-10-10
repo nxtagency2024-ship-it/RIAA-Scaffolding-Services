@@ -176,3 +176,6 @@ html,body{overflow-x:hidden}
   #top::before{background:rgba(16,18,20,.35) !important}
   #top{background-image:none !important}
 }
+@media(min-width:901px){
+  .hero-in{padding-top:7rem}
+}
