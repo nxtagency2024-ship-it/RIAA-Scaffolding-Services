@@ -169,3 +169,7 @@ html,body{overflow-x:hidden}
 #top .wrap{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 .hero-video{object-position: 100% center}
+.hero-video{object-position:100% center}
+@media(max-width:900px){
+  #top::before{background:linear-gradient(180deg,rgba(16,18,20,.55),rgba(16,18,20,.4) 50%,rgba(16,18,20,.7))}
+}
