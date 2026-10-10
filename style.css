@@ -177,5 +177,5 @@ html,body{overflow-x:hidden}
   #top{background-image:none !important}
 }
 @media(min-width:901px){
-  .hero-in{padding-top:7rem}
+  .hero-in{padding-top:4rem}
 }
