@@ -192,3 +192,5 @@ input[type="date"]{
 }
 input[type="date"]::-webkit-date-and-time-value{text-align:left;min-height:1.4em}
 input[type="date"]::-webkit-calendar-picker-indicator{opacity:.8}
+.contact a{color:#fff;text-decoration:none}
+.contact a:hover{color:var(--red)}
