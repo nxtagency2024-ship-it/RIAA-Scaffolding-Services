@@ -38,6 +38,7 @@
 <main>
 <section id="top">
   <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="img/hero.png"><source src="img/hero.mp4" type="video/mp4"></video>
+ <button class="video-toggle" id="videoToggle" type="button" aria-label="Pause background video">Pause video</button>
   <div class="wrap">
     <div class="hero-in">
       <p class="badge"><svg class="i"><use href="#hat"/></svg>Reliable and Licensed Contractor</p>
@@ -180,6 +181,13 @@ form.addEventListener('submit', function (ev) {
     })
     .then(function () { btn.disabled = false; });
 });
+  var vid = document.querySelector('.hero-video'), vbtn = document.getElementById('videoToggle');
+if (vid && vbtn) {
+  vbtn.addEventListener('click', function () {
+    if (vid.paused) { vid.play(); vbtn.textContent = 'Pause video'; vbtn.setAttribute('aria-label', 'Pause background video'); }
+    else { vid.pause(); vbtn.textContent = 'Play video'; vbtn.setAttribute('aria-label', 'Play background video'); }
+  });
+}
 </script>
 </body>
 </html>
