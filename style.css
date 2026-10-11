@@ -184,3 +184,11 @@ footer a:hover{color:#fff}
 .video-toggle{position:absolute;right:1.25rem;bottom:1.25rem;z-index:3;background:rgba(16,18,20,.8);color:#fff;border:1px solid rgba(255,255,255,.4);font-family:'Barlow Condensed';font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:1rem;padding:.6rem 1rem;cursor:pointer}
 .video-toggle:hover{border-color:#fff}
 @media(prefers-reduced-motion:reduce){.video-toggle{display:none}}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:#101214;padding:.8rem 1.2rem;z-index:100}
+.skip:focus{left:1rem;top:1rem}
+.video-toggle{position:absolute;right:1.25rem;bottom:1.25rem;z-index:3;background:rgba(16,18,20,.8);color:#fff;border:1px solid rgba(255,255,255,.4);font-family:'Barlow Condensed';font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:1rem;padding:.6rem 1rem;cursor:pointer}
+.video-toggle:hover{border-color:#fff}
+@media(prefers-reduced-motion:reduce){.video-toggle{display:none}}
+.kicker,.policy a{color:#b3231d}
+.dark .kicker,.badge,.proj small{color:#ff6a62}
+input::placeholder,textarea::placeholder{color:#9a9ea4}
