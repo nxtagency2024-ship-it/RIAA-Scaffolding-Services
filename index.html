@@ -132,17 +132,21 @@
         <div><span class="ic"><svg class="i"><use href="#clock"/></svg></span><p><small>Hours</small><span>Mon–Fri 09:00 am - 05:00 pm · Sat-Sun Closed</span></p></div>
       </div>
     </div>
-    <form id="qform">
-      <div><label for="n">Full name</label><input id="n" name="name" placeholder="Jane Smith" required autocomplete="name"></div>
-      <div><label for="p">Phone</label><input id="p" name="phone" type="tel" placeholder="(123) 456-7890" required autocomplete="tel"></div>
-      <div><label for="e">Email</label><input id="e" name="email" type="email" placeholder="you@example.com" required autocomplete="email"></div>
-      <div><label for="z">Site postcode / zip</label><input id="z" name="postcode" placeholder="Where’s the job?" autocomplete="postal-code"></div>
-      <div><label for="t">Project type</label><select id="t" name="type"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></div>
-      <div><label for="s">Ideal start date</label><input id="s" name="start" type="date"></div>
-      <div class="full"><label for="d">Tell us about the job</label><textarea id="d" name="details" placeholder="e.g. I need scaffolding for the exterior of a two-story bulding, approx. 30 feet high, for a four-week project."></textarea></div>
-      <div class="full fbot"><p>No obligation. We will never share your information.</p><button class="btn" type="submit">Get my free quote</button></div>
-      <p id="msg" class="full" role="status"></p>
-    </form>
+    <form id="qform" action="https://formsubmit.co/ajax/YOUR_EMAIL_HERE" method="POST">
+  <input type="hidden" name="_subject" value="New quote request from the website">
+  <input type="hidden" name="_template" value="table">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+  <div><label for="n">Full name</label><input id="n" name="name" placeholder="Jane Smith" required autocomplete="name"></div>
+  <div><label for="p">Phone</label><input id="p" name="phone" type="tel" placeholder="(555) 014-2290" required autocomplete="tel"></div>
+  <div><label for="e">Email</label><input id="e" name="email" type="email" placeholder="you@example.com" required autocomplete="email"></div>
+  <div><label for="z">Site postcode / zip</label><input id="z" name="postcode" placeholder="Where’s the job?" autocomplete="postal-code"></div>
+  <div><label for="t">Project type</label><select id="t" name="project_type"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></div>
+  <div><label for="s">Ideal start date</label><input id="s" name="start_date" type="date"></div>
+  <div class="full"><label for="d">Tell us about the job</label><textarea id="d" name="job_details" placeholder="e.g. Two-storey semi, full front elevation for re-roofing, approx. 6 weeks"></textarea></div>
+  <div class="full fbot"><p>No obligation. We will never share your information.</p><button class="btn" type="submit">Get my free quote</button></div>
+  <p id="msg" class="full" role="status"></p>
+</form>
   </div>
 </section>
 </main>
@@ -153,15 +157,25 @@
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
-// Opens the visitor's email app with the form filled in.
-// To receive submissions directly, replace with a Formspree/Web3Forms endpoint.
-document.getElementById('qform').addEventListener('submit', function (ev) {
+var form = document.getElementById('qform');
+form.addEventListener('submit', function (ev) {
   ev.preventDefault();
-  var f = new FormData(ev.target);
-  var body = ['Name: ' + f.get('name'), 'Phone: ' + f.get('phone'), 'Email: ' + f.get('email'),
-    'Postcode: ' + f.get('postcode'), 'Project: ' + f.get('type'), 'Start: ' + f.get('start'), '', f.get('details')].join('\n');
-  window.location.href = 'mailto:quotes@riaascaffolding.com?subject=' + encodeURIComponent('Quote request from ' + f.get('name')) + '&body=' + encodeURIComponent(body);
-  document.getElementById('msg').textContent = 'Your email app should open with the request filled in. Press send to finish.';
+  var msg = document.getElementById('msg');
+  var btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  msg.textContent = 'Sending…';
+  fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d.success === 'true' || d.success === true) {
+        form.reset();
+        msg.textContent = 'Thanks! We got your request and will be in touch within one working day.';
+      } else { throw new Error(); }
+    })
+    .catch(function () {
+      msg.textContent = 'Sorry, something went wrong. Please call us at (424) 744-9577.';
+    })
+    .then(function () { btn.disabled = false; });
 });
 </script>
 </body>
